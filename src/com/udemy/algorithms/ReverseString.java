@@ -4,12 +4,10 @@ import com.udemy.algorithms.datastructures.Stack;
 
 public class ReverseString {
 
-    public static void main(String[] args) {
-        String testString = "We need to reverse this string using stacks!!!";
-
+    public static void reverseString(String inputString) {
         Stack<Character> stack = new Stack<>(10);
 
-        char[] arr = testString.toCharArray();
+        char[] arr = inputString.toCharArray();
 
         for(char ch : arr) {
             stack.push(ch);
@@ -20,6 +18,10 @@ public class ReverseString {
             resultStr.append(stack.pop());
         }
 
-        System.out.printf("Result string - " + resultStr.toString());
+        System.out.println("Result string - " + resultStr.toString());
+    }
+
+    public static void main(String[] args) {
+        reverseString("We need to reverse this string using stacks!!!");
     }
 }
