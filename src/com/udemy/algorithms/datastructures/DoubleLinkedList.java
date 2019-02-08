@@ -170,4 +170,40 @@ public class DoubleLinkedList<E> {
         return size;
     }
 
+    public String toString() {
+        if(head == null) {
+            return "";
+        }
+
+        StringBuilder result = new StringBuilder();
+        Node c = head;
+        while(c != null) {
+            if(result.length() > 0) {
+                result.append(" -> ");
+            }
+            result.append("{").append(c.value).append("}");
+            c = c.next;
+        }
+
+        return result.toString();
+    }
+
+    public String reverseList() {
+        if(tail == null) {
+            return "";
+        }
+
+        StringBuilder result = new StringBuilder();
+        Node c = tail;
+        while(c != null) {
+            if(result.length() > 0) {
+                result.append(" -> ");
+            }
+            result.append("{").append(c.value).append("}");
+            c = c.previous;
+        }
+
+        return result.toString();
+    }
+
 }

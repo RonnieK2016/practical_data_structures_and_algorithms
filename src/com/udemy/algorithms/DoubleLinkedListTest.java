@@ -48,6 +48,10 @@ public class DoubleLinkedListTest {
         dl.insertFirst(3);
         dl.insertFirst(4);
 
+        System.out.println("Printing list: " + dl);
+
+        System.out.println("Printing reverse list: " + dl.reverseList());
+
         System.out.println("Insert element at 1");
         dl.insertAt(1, 10);
 
