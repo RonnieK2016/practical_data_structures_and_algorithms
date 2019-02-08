@@ -32,5 +32,6 @@ public class QueueTest {
             System.out.println(queue.poll());
         }
         System.out.println("Check size of queue " + queue.getSize());
+
     }
 }
