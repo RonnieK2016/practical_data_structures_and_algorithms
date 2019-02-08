@@ -3,6 +3,7 @@ package com.udemy.algorithms.datastructures;
 public class DoubleLinkedList<E> {
 
     Node head;
+    Node tail;
     int size;
 
     class Node {
@@ -20,21 +21,28 @@ public class DoubleLinkedList<E> {
     }
 
     public E getLast() {
-        Node last = getLastNode();
-        return last != null ? last.value : null;
+        return tail != null ? tail.value : null;
     }
 
     private Node getLastNode() {
-        Node c = head;
-        if(c == null) {
-            return null;
-        }
+        return tail;
+    }
 
-        while(c.next != null) {
+    private Node getNodeAt(int index) {
+        Node c = head;
+        int i = 1;
+        while(i < index && c != null) {
             c = c.next;
+            i++;
         }
 
         return c;
+    }
+
+    public E getValueAt(int index) {
+        Node nodeAt = getNodeAt(index);
+
+        return nodeAt != null ? nodeAt.value : null;
     }
 
     public void insertFirst(E value) {
@@ -43,6 +51,11 @@ public class DoubleLinkedList<E> {
         if(head != null) {
             head.previous = newNode;
         }
+
+        if(tail == null) {
+            tail = newNode;
+        }
+
         head = newNode;
         size++;
     }
@@ -57,6 +70,7 @@ public class DoubleLinkedList<E> {
             Node newNode = new Node(value);
             newNode.previous = lastNode;
             lastNode.next = newNode;
+            tail = newNode;
             size++;
         }
     }
@@ -86,14 +100,66 @@ public class DoubleLinkedList<E> {
         size--;
         if(size == 0) {
             head = null;
+            tail = null;
         }
         else {
             Node previous = last.previous;
             previous.next = null;
             last.previous = null;
+            tail = previous;
         }
 
         return last.value;
+    }
+
+    public void insertAt(int index, E value) {
+        Node nodeAt = getNodeAt(index);
+
+        if(nodeAt == null) {
+            insertLast(value);
+            return;
+        }
+
+        Node previousNode = nodeAt.previous;
+        Node newNode = new Node(value);
+        newNode.next = nodeAt;
+        newNode.previous = previousNode;
+        nodeAt.previous = newNode;
+        //head node case
+        if(previousNode == null) {
+             head = newNode;
+        }
+        else {
+            previousNode.next = newNode;
+        }
+        size++;
+    }
+
+    public E deleteAt(int index) {
+        Node nodeAt = getNodeAt(index);
+
+        if(nodeAt == null) {
+            return null;
+        }
+
+        size--;
+        //head node case
+        if(nodeAt.previous == null) {
+            head = nodeAt.next;
+        }
+        else {
+            nodeAt.previous.next = nodeAt.next;
+        }
+
+        //tail node case
+        if(nodeAt.next == null) {
+            tail = nodeAt.previous;
+        }
+        else {
+            nodeAt.next.previous = nodeAt.previous;
+        }
+
+        return nodeAt.value;
     }
 
     public boolean isEmpty() {

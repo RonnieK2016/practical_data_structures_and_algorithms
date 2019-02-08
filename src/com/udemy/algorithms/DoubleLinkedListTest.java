@@ -48,6 +48,25 @@ public class DoubleLinkedListTest {
         dl.insertFirst(3);
         dl.insertFirst(4);
 
+        System.out.println("Insert element at 1");
+        dl.insertAt(1, 10);
+
+        System.out.println("Get element at  1 - " + dl.getValueAt(1));
+
+        System.out.println("Insert element at 5");
+        dl.insertAt(5, 20);
+
+        System.out.println("Get element at  5 - " + dl.getValueAt(5));
+
+        System.out.println("Insert element at 20");
+        dl.insertAt(20, 11);
+
+        System.out.println("Get last element - " + dl.getLast());
+
+        System.out.println("Remove element at 5 - " + dl.deleteAt(5));
+
+        System.out.println("Remove element at 1 - " + dl.deleteAt(1));
+
         System.out.println("Deleting all elements from first");
         while(!dl.isEmpty()) {
             System.out.println("Deleted element " + dl.deleteFirst());
