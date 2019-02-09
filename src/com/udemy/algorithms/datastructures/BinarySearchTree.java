@@ -1,4 +1,4 @@
-package com.udemy.algorithms.tree;
+package com.udemy.algorithms.datastructures;
 
 public class BinarySearchTree<K extends Comparable<K>,V> {
     class Node {
@@ -53,25 +53,26 @@ public class BinarySearchTree<K extends Comparable<K>,V> {
         }
     }
 
-    private V getValue(Node root, K key) {
+    private Node getNodeByKey(Node root, K key) {
         if(root == null) {
             return null;
         }
 
         int comparisonResult = root.key.compareTo(key);
         if(comparisonResult > 0) {
-            return getValue(root.left, key);
+            return getNodeByKey(root.left, key);
         }
         else if(comparisonResult < 0) {
-            return getValue(root.right, key);
+            return getNodeByKey(root.right, key);
         }
         else {
-            return root.value;
+            return root;
         }
     }
 
     public V getValue(K key) {
-        return getValue(rootNode, key);
+        Node nodeAt = getNodeByKey(rootNode, key);
+        return nodeAt != null ? nodeAt.value : null;
     }
 
     public int getSize() {

@@ -1,6 +1,6 @@
 package com.udemy.algorithms;
 
-import com.udemy.algorithms.tree.BinarySearchTree;
+import com.udemy.algorithms.datastructures.BinarySearchTree;
 
 public class BinarySearchTreeTest {
 
