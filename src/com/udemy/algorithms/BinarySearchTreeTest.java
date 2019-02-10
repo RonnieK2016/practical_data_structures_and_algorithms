@@ -29,6 +29,8 @@ public class BinarySearchTreeTest {
         System.out.println("Checking that node 12 is gone -  " + testTree.getValue(12));
 
         System.out.println("Size of tree after deletion " + testTree.getSize());
+
+        System.out.println("Printing tree " + testTree.printTree());
     }
 
 }
