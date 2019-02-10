@@ -93,7 +93,7 @@ public abstract class Heap <E extends Comparable<E>> {
         return lastIndex == -1;
     }
 
-    public String printHeap() {
+    public String displayHeap() {
         if(isEmpty()) {
             return "";
         }

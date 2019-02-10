@@ -22,7 +22,7 @@ public class HeapTest {
 
         System.out.println("Size of heap " + maxHeap.getSize());
 
-        System.out.println("Printing heap " + maxHeap.printHeap());
+        System.out.println("Printing heap " + maxHeap.displayHeap());
 
         System.out.println("Retrieving elements from heap: ");
         while(!maxHeap.isEmpty()) {
@@ -45,7 +45,7 @@ public class HeapTest {
 
         System.out.println("Size of heap " + minHeap.getSize());
 
-        System.out.println("Printing heap " + minHeap.printHeap());
+        System.out.println("Printing heap " + minHeap.displayHeap());
 
         System.out.println("Retrieving elements from heap: ");
         while(!minHeap.isEmpty()) {
