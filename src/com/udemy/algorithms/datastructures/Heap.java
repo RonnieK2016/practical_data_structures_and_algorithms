@@ -92,4 +92,49 @@ public abstract class Heap <E extends Comparable<E>> {
     public boolean isEmpty() {
         return lastIndex == -1;
     }
+
+    public String printHeap() {
+        if(isEmpty()) {
+            return "";
+        }
+
+        int maxLevel = (int) Math.round(Math.log(getSize())/Math.log(2));
+
+        StringBuilder result = new StringBuilder();
+
+        int index = 0;
+        int stopIndex = 1;
+
+        for(int i = 0; i < maxLevel; i++) {
+
+            result.append("\r\n");
+
+            int floor = maxLevel - i;
+            int firstSpaces = (int) Math.pow(2, (floor)) - 1;
+            int betweenSpaces = (int) Math.pow(2, (floor + 1)) - 1;
+
+            appendWhiteSpaces(firstSpaces, result);
+
+            while(index < stopIndex) {
+                if(elements[index] != null) {
+                    result.append(elements[index]);
+                }
+                else {
+                    result.append("--");
+                }
+                index++;
+                appendWhiteSpaces(betweenSpaces, result);
+            }
+
+            stopIndex += (int)Math.min(Math.pow(2,i + 1), getSize());
+        }
+
+        return result.toString();
+    }
+
+    private void appendWhiteSpaces(int count, StringBuilder output) {
+        for (int i = 0; i < count; i++) {
+            output.append(" ");
+        }
+    }
 }
